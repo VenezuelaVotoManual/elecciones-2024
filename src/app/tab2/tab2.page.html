@@ -1,0 +1,69 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>CNE Maquina 2024 - imprimir Acta</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">CNE Maquina 2024 - Colocar votos</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-text color="black">
+    <h3>
+      Generar Acta con resultados.<br/>
+      La trampa se activa, si hay 20 o mas votos y no se abre la caja para verificar el Acta de la m&aacute;quina.<br/>
+      <div *ngIf="showTotals" >Usted ha colocado {{ total }}.</div>
+    </h3>
+  </ion-text>
+  <br/>
+
+  <ion-toggle labelPlacement="end" [checked]="hasVerify" (ionChange)="onToogleVerify()">
+    &iquest;Se abre la caja para verificar el Acta?
+  </ion-toggle>
+  <br/><br/>
+  <ion-button (click)="onClean()">
+    <ion-icon slot="start" name="reload-circle"></ion-icon>
+    &nbsp; Limpiar Acta
+  </ion-button>
+  <ion-button (click)="onPrint()">
+    <ion-icon name="print"></ion-icon>
+    &nbsp; Imprimir Acta
+  </ion-button>
+
+  <ion-list *ngIf="showTotals">
+    <ion-item-group>
+      <ion-text color="black">
+        <h3 *ngIf="showCandidates == false" >Acta con resultados reales. No trampa</h3>
+        <h3 *ngIf="showCandidates == true" >Acta con resultados ¡FALSOS!. Hay trampa</h3>
+      </ion-text>
+      <ion-item *ngFor="let candidate of candidateTotals">
+        <ion-label>{{ candidate.name }}</ion-label>
+        <ion-badge slot="end">{{ candidate.votes }}</ion-badge>
+      </ion-item>
+      <ion-item>
+        <ion-label slot="start">Total de votos:</ion-label>
+        <ion-badge slot="end">{{ total }}</ion-badge>
+      </ion-item>
+    </ion-item-group>
+  </ion-list>
+
+  <ion-list *ngIf="showCandidates">
+    <ion-item-group>
+      <ion-text color="black">
+        <h3>Caja con resultados ¡REALES!</h3>
+      </ion-text>
+      <ion-item *ngFor="let candidate of candidateResults">
+        <ion-label>{{ candidate.name }}</ion-label>
+        <ion-badge slot="end">{{ candidate.votes }}</ion-badge>
+      </ion-item>
+      <ion-item>
+        <ion-label slot="start">Total de votos:</ion-label>
+        <ion-badge slot="end">{{ total }}</ion-badge>
+      </ion-item>
+    </ion-item-group>
+  </ion-list>
+
+</ion-content>

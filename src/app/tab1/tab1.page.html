@@ -1,0 +1,51 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>CNE M&aacute;quina 2024 - Colocar votos</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">CNE M&aacute;quina 2024 - Colocar votos</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-list>
+    <ion-item-group>
+      <ion-text color="black">
+        <h3>Seleccione varios candidatos</h3>
+      </ion-text>
+      <ion-item *ngFor="let candidate of candidates">
+        <ion-avatar slot="start">
+          <ion-img
+            [src]="candidate.pictureURL"
+            (click)="onClick(candidate.id)"
+          ></ion-img>
+        </ion-avatar>
+        <ion-label (click)="onClick(candidate.id)">{{ candidate.name }}</ion-label>
+        <ion-badge slot="end" (click)="onClick(candidate.id)">{{ candidate.votes }}</ion-badge>
+      </ion-item>
+      <ion-item>
+        <ion-label slot="start">Total de votos:</ion-label>
+        <ion-badge slot="end">{{ total }}</ion-badge>
+      </ion-item>
+    </ion-item-group>
+  </ion-list>
+  <ion-button (click)="onReset()">
+    <ion-icon slot="start" name="reload-circle"></ion-icon>
+    Reiniciar Votos
+  </ion-button>
+  <br />
+  <ion-text color="black">
+    <h3>
+      Coloque de 20 a m&aacute;s votos para activar la trampa. <br/>
+      Selecione "Acta" para imprimir los resultados finales. <br/>
+      <p>
+        ¡¡¡DEBEMOS IMPEDIR TODAS LAS FALSAS ELECCIONES ELECTRONICAS!!!<br/>
+        Hasta que se hagan manuales, sin m&aacute;quinas, con REP limpio<br/>
+        Contando nosotros nuestros votos con nuestras manos.<br/>
+      </p>
+    </h3>
+  </ion-text>
+</ion-content>

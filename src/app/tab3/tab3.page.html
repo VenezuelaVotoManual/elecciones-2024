@@ -1,0 +1,33 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      CNE Maquinas 2024 - Video la aplicaci&oacute;n
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">CNE Maquinas 2024 - Video la aplicaci&oacute;n</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-text color="black">
+    <h3>
+      Presiona el video.
+    </h3>
+  </ion-text>
+  <br />https://www.youtube.com/watch?v=Z9qzSYl7JNA
+
+  <div style="position:relative;overflow:hidden;padding-bottom:56.25%;height:0;">
+    <iframe src="https://www.youtube.com/embed/Z9qzSYl7JNA" allowfullscreen=""
+      style="position:absolute;top:0;left:0;width:100%;height:100%;" frameborder="0" height="150" width="230"></iframe>
+  </div>
+
+  <ion-button onclick="window.open('https://youtu.be/Z9qzSYl7JNA', '_system', 'location=yes'); return false;">
+    <ion-icon name="logo-youtube"></ion-icon>
+    &nbsp; Ver video en YouTube
+  </ion-button>
+
+</ion-content>
